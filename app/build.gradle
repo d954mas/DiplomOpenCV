@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.d9564mas.diplom"
+        applicationId "com.d954mas.diplom"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

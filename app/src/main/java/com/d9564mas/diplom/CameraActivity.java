@@ -13,7 +13,6 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
@@ -25,8 +24,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CameraActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2 {
     // A tag for log output.
@@ -117,20 +114,10 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     }
 
 
-    private List<MatOfPoint> contours=new ArrayList<>();
     @Override
     public Mat onCameraFrame(final CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         final Mat rgba = inputFrame.rgba();
         final Mat gray = inputFrame.gray();
-      //  Imgproc.cvtColor(rgba, rgba, Imgproc.COLOR_RGB2);
-      //  Imgproc.threshold(rgba, rgba, 40, 255, Imgproc.THRESH_BINARY);
-
-      // Imgproc.Canny(rgba, mIntermediateMat, 80, 100);
-
-      //  Imgproc.findContours(mIntermediateMat, contours, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE, new Point(0, 0));
-        //imageFilter.apply(rgba,rgba);
-       // hierarchy.release();
-      //  Imgproc.drawContours(rgba, contours, -1, new Scalar(Math.random() * 255, Math.random() * 255, Math.random() * 255));//, 2, 8, hierarchy, 0, new Point());
         MatOfRect dots = new MatOfRect();
         if(haarCascade!=null){
             haarCascade.detectMultiScale(gray,dots,1.1,2,2,new Size(200,200),new Size());
